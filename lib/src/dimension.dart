@@ -183,10 +183,10 @@ class Length extends Dimension {
   Length operator -() => this.copyWith(value: -this.value);
 
   @override
-  int get hashCode => hashValues(value, unit);
+  int get hashCode => Object.hash(value, unit);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return other is Length && value == other.value && unit == other.unit;
   }
 
@@ -305,10 +305,10 @@ class _CompoundDimension extends Dimension {
   }
 
   @override
-  int get hashCode => hashList(lengths);
+  int get hashCode => Object.hashAll(lengths);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     if (identical(this, other)) return true;
     if (other.runtimeType != runtimeType) return false;
     return other is _CompoundDimension &&
@@ -397,10 +397,10 @@ class _MinDimension extends _CompareDimension {
   }
 
   @override
-  int get hashCode => hashValues(value1, value2);
+  int get hashCode => Object.hash(value1, value2);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return other is _MinDimension &&
         value1 == other.value1 &&
         value2 == other.value2;
@@ -437,10 +437,10 @@ class _MaxDimension extends _CompareDimension {
   }
 
   @override
-  int get hashCode => hashValues(value1, value2);
+  int get hashCode => Object.hash(value1, value2);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return other is _MaxDimension &&
         value1 == other.value1 &&
         value2 == other.value2;
